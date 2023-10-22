@@ -1,4 +1,3 @@
 <?php
 
-$name = "Name";
-$cost = 0;
+require "index.view.php";
