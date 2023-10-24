@@ -1,6 +1,6 @@
 <?php
 
-$config = require 'config.php';
+$config = require basePath('config.php');
 $db = new Database($config['database'], 'zest', '123456');
 
 $heading = 'Note';
@@ -10,4 +10,7 @@ $note = $db->query('select * from notes where id = ?', [$_GET['id']])->findOrFai
 
 authorize($note['user_id'] === $currentUserId);
 
-require 'views/notes/show.view.php';
+view('notes/show.view.php', [
+    'heading' => $heading,
+    'note' => $note
+]);
